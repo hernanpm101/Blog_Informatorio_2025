@@ -1,0 +1,15 @@
+{% extends "mundial/base.html" %}
+
+{% block title %}Editar Acerca de nosotros{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>Editar Acerca de nosotros</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Guardar cambios</button>
+    <a href="{% url 'mundial:acerca' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

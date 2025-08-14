@@ -1,0 +1,38 @@
+{% extends "mundial/base.html" %}
+{% load static %}
+{% block title %}Nueva Categoría{% endblock %}
+
+{% block content %}
+<style>
+  .nueva-categoria-fondo {
+    position: relative;
+    z-index: 0;
+  }
+  .nueva-categoria-fondo::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("{% static 'img/copa_fifa3.jpg' %}") no-repeat center center;
+    background-size: contain; /* usar 'cover' si querés que llene todo */
+    opacity: 0.12;
+    z-index: -1;
+  }
+  nav.navbar {
+    position: relative;
+    z-index: 10; /* asegura que el navbar quede encima */
+  }
+</style>
+
+<div class="nueva-categoria-fondo">
+  <div class="container mt-4">
+    <h1>Crear Nueva Categoría</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success">Guardar</button>
+      <a href="{% url 'mundial:post_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
+

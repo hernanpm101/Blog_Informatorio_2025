@@ -1,0 +1,81 @@
+{% extends "mundial/base.html" %}
+{% load static %}
+
+{% block title %}{{ post.titulo }} - Blog Mundial FIFA{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+  <!-- Título -->
+  <h1 class="mb-3">{{ post.titulo }}</h1>
+
+  <!-- Fecha y categoría -->
+  <p class="text-muted">
+    Publicado el {{ post.fecha_publicacion|date:"d M Y" }} 
+    | Categoría: {{ post.categoria.nombre }}
+  </p>
+
+  <!-- Imagen principal -->
+  {% if post.imagen %}
+    <img src="{{ post.imagen.url }}" class="img-fluid mb-4" alt="{{ post.titulo }}">
+  {% else %}
+    <img src="{% static 'img/no-image.jpg' %}" class="img-fluid mb-4" alt="Sin imagen">
+  {% endif %}
+
+  <!-- Contenido -->
+  <div class="mb-5">
+    {{ post.contenido|linebreaks }}
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="mb-4 d-flex gap-2">
+    <a href="{% url 'mundial:post_list' %}" class="btn btn-secondary">← Volver a la lista</a>
+
+    {% if user.is_authenticated and user.is_superuser and user.username == "Hernan" %}
+      <a href="{% url 'mundial:post_delete' post.pk %}" class="btn btn-danger"
+         onclick="return confirm('¿Estás seguro de que deseas eliminar este post?')">
+        🗑 Eliminar Post
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Sección de comentarios -->
+  <hr>
+  <h3>Comentarios</h3>
+  {% if comentarios %}
+    <ul class="list-unstyled">
+      {% for comentario in comentarios %}
+        <li class="mb-3 border-bottom pb-2">
+          <strong>{{ comentario.autor.username }}</strong> 
+          <small class="text-muted">({{ comentario.fecha|date:"d M Y H:i" }})</small>
+          <p>{{ comentario.contenido }}</p>
+
+          {% if user.is_authenticated and user.is_superuser and user.username == "Hernan" %}
+            <a href="{% url 'mundial:eliminar_comentario' comentario.id %}" 
+               class="btn btn-sm btn-outline-danger"
+               onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">
+              🗑 Eliminar
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay comentarios todavía.</p>
+  {% endif %}
+
+  <!-- Formulario para nuevo comentario -->
+  <hr>
+  <h4>Agregar un comentario</h4>
+  <form method="post" action="{% url 'mundial:agregar_comentario' post.slug %}">
+    {% csrf_token %}
+    {{ form_comentario.as_p }}
+    <button type="submit" class="btn btn-primary">Enviar comentario</button>
+  </form>
+  <br>
+
+</div>
+{% endblock %}
+
+
+

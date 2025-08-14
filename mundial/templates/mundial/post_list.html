@@ -1,0 +1,126 @@
+{% extends "mundial/base.html" %}
+{% load static %}
+
+{% block title %}Blog Mundial FIFA{% endblock %}
+
+{% block content %}
+
+<style>
+  /* Marca de agua fija detrás del contenido */
+  .mundiales-fondo{
+    position: relative;
+    min-height: 100vh;
+    z-index: 0;
+  }
+  .mundiales-fondo::before{
+    content:"";
+    position: fixed; /* cubre toda la pantalla al scrollear */
+    inset: 0;
+    background: url("{% static 'img/messi_copa_levanta.jpg' %}") no-repeat center center;
+    background-size: contain; /* probá 'cover' si querés que llene todo */
+    opacity: .14;
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* El contenido por encima del fondo */
+  .mundiales-fondo > *{
+    position: relative;
+    z-index: 1;
+  }
+  /* Opcional: que las cards dejen ver un poco el fondo */
+  .card{
+    background-color: rgba(255,255,255,.92);
+  }
+</style>
+
+<div class="mundiales-fondo">
+  <div class="container mt-4">
+
+    <!-- Encabezado con botones a la izquierda -->
+    <div class="d-flex align-items-center mb-3 gap-2">
+      <h1 class="me-3 mb-0">Mundiales</h1>
+      {% if user.is_authenticated and user.is_superuser %}
+        <a href="{% url 'mundial:post_create' %}" class="btn btn-success btn-sm">➕ Nuevo Post</a>
+        <a href="{% url 'mundial:nueva_categoria' %}" class="btn btn-success btn-sm">➕ Nueva Categoría</a>
+      {% endif %}
+    </div>
+    <div>
+      <p>Historias, Estadisticas y Eventos globales</p>
+    </div>
+
+    <!-- Lista de posts en 2 columnas -->
+    <div class="row">
+      {% for post in posts %}
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3><a href="{% url 'mundial:post_detail' post.slug %}">{{ post.titulo }}</a></h3>
+            <p class="text-muted">
+              Publicado el {{ post.fecha_publicacion|date:"d M Y" }} | 
+              Categoría: {{ post.categoria.nombre }}
+            </p>
+            <p>{{ post.resumen }}</p>
+            <a href="{% url 'mundial:post_detail' post.slug %}" class="btn btn-primary btn-sm">Leer más</a>
+
+            {% if user.is_authenticated and user.is_superuser %}
+              <a href="{% url 'mundial:post_update' post.slug %}" class="btn btn-warning btn-sm ms-2">✏️ Editar</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p>No hay posts publicados todavía.</p>
+      {% endfor %}
+    </div>
+
+    <!-- Paginación -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Anterior</a>
+        </li>
+        {% endif %}
+        <li class="page-item disabled">
+          <span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+        </li>
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Siguiente</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    <!-- Formulario de filtrado al final -->
+    <div>
+      <h3>Busqueda</h3>
+    </div>
+    <form method="get" class="row mt-4 mb-4">
+      <div class="col-md-3">
+        <label>Fecha:</label>
+        <input type="date" name="fecha" value="{{ request.GET.fecha }}" class="form-control">
+      </div>
+      <div class="col-md-3">
+        <label>Categoría:</label>
+        <select name="categoria" class="form-control">
+          <option value="">Todas</option>
+          {% for cat in categorias %}
+            <option value="{{ cat.id }}" {% if request.GET.categoria == cat.id|stringformat:"s" %}selected{% endif %}>
+              {{ cat.nombre }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label>Mínimo de comentarios:</label>
+        <input type="number" name="comentarios" value="{{ request.GET.comentarios }}" min="0" class="form-control">
+      </div>
+      <div class="col-md-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "mundial/base.html" %}
+{% load static %}
+
+{% block title %}Acerca de nosotros{% endblock %}
+
+{% block content %}
+<style>
+  .acerca-fondo {
+    position: relative;
+    min-height: 100vh;
+    z-index: 0;
+  }
+  .acerca-fondo::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("{% static 'img/messi_copa_levanta.jpg' %}") no-repeat center center;
+    background-size: contain; /* O 'cover' si querés que llene toda la pantalla */
+    background-attachment: fixed;
+    opacity: 0.12;
+    z-index: -1;
+    pointer-events: none; /* ✅ Deja pasar los clics al contenido */
+  }
+</style>
+
+<div class="acerca-fondo">
+  <div class="container mt-4">
+    <h1>Acerca de nosotros</h1>
+    <p>{{ pagina.contenido|linebreaks }}</p>
+
+    {% if user.is_authenticated and user.is_superuser and user.username == "Hernan" %}
+      <a href="{% url 'mundial:editar_acerca' %}" class="btn btn-warning mt-3">✏ Editar</a>
+    {% endif %}
+  </div>
+  <br>
+</div>
+{% endblock %}
+

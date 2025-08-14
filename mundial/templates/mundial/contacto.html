@@ -1,0 +1,52 @@
+{% extends 'mundial/base.html' %}
+{% load static %}
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+<style>
+  /* Fondo como en Inicio, pero sin empujar el footer */
+  body.contacto-page {
+    position: relative;
+    z-index: 0;
+  }
+  body.contacto-page::before {
+    content:"";
+    position: fixed;  /* se mantiene al scrollear */
+    inset: 0;
+    background: url("{% static 'img/informatorio.png' %}") no-repeat center center;
+    background-size: contain;
+    opacity: .14;
+    pointer-events: none; /* no bloquea clics */
+    z-index: -1;
+  }
+</style>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Contacto</h1>
+    <p>Envíanos un mensaje y te responderemos lo antes posible.</p>
+
+    <form method="POST" class="formulario-izquierda">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="text-danger small">
+                        {{ field.errors|striptags }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary px-4">Enviar</button>
+        <a href="/" class="btn btn-secondary px-4 ms-2">Cancelar</a>
+    </form>
+    <br>
+</div>
+
+<script>
+  // Agregamos la clase al body para aplicar el fondo solo en esta página
+  document.body.classList.add('contacto-page');
+</script>
+{% endblock %}
+

@@ -1,0 +1,39 @@
+{% extends "mundial/base.html" %}
+{% load static %}
+{% block title %}{% if form.instance.pk %}Editar Post{% else %}Crear Post{% endif %}{% endblock %}
+
+{% block content %}
+<style>
+  .nuevo-post-fondo {
+    position: relative;
+    z-index: 0;
+  }
+  .nuevo-post-fondo::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("{% static 'img/copa_fifa3.jpg' %}") no-repeat center center;
+    background-size: contain; /* o 'cover' */
+    opacity: 0.12;
+    z-index: -1;
+  }
+  nav.navbar {
+    position: relative;
+    z-index: 10; /* ✅ navbar encima del fondo */
+  }
+</style>
+
+<div class="nuevo-post-fondo">
+  <div class="container mt-4">
+    <h1>{% if form.instance.pk %}Editar Post{% else %}Crear Post{% endif %}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success">Guardar</button>
+    </form>
+
+    <a href="{% url 'mundial:post_list' %}">Volver al listado</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "mundial/base.html" %}
+{% block title %}Agregar Comentario{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>Agregar Comentario para: "{{ post.titulo }}"</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Enviar comentario</button>
+  </form>
+
+  <a href="{% url 'mundial:post_detail' post.slug %}">Volver al post</a>
+</div>
+{% endblock %}

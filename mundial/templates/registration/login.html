@@ -1,0 +1,49 @@
+{% extends "mundial/base.html" %}
+{% load static %}
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<style>
+  /* Fondo especial para la página de login */
+  .login-fondo {
+    position: relative;
+    z-index: 0;
+  }
+  .login-fondo::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("{% static 'img/informatorio.png' %}") no-repeat center center;
+    background-size: contain;
+    background-attachment: fixed;
+    opacity: 0.12;
+    z-index: -1; /* ✅ detrás de todo */
+  }
+  nav.navbar {
+    position: relative;
+    z-index: 10; /* ✅ navbar siempre encima */
+  }
+</style>
+
+<div class="login-fondo">
+  <div class="container mt-4">
+      <h1 class="mb-4">Iniciar sesión</h1>
+      <p>Ingresa tus credenciales para acceder al blog.</p>
+
+      <form method="post" class="formulario-izquierda">
+          {% csrf_token %}
+          {% for field in form %}
+              <div class="mb-3">
+                  {{ field.label_tag }}
+                  {{ field }}
+                  {% if field.errors %}
+                      <div class="text-danger">{{ field.errors }}</div>
+                  {% endif %}
+              </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Blog Mundial FIFA {% endblock %}</title>
+  <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'mundial/styles.css' %}">
+  <!-- Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .social-icons a {
+      color: #fff;
+      font-size: 26px;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #007bff;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrapper d-flex flex-column min-vh-100"><!-- Contenedor principal -->
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'mundial:post_list' %}">Informatorio 2025 - Mundiales FIFA 1930 - 2022</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="{% url 'mundial:post_list' %}">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'mundial:acerca' %}">Acerca de nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'mundial:contacto' %}">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'mundial:registro' %}">Registrate</a></li>
+
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <span class="nav-link mb-0">{{ user.username }}</span>
+            </li>
+            <li class="nav-item">
+              <form method="post" action="{% url 'logout' %}" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link nav-link p-0 m-0" style="color: #fff; text-decoration: none;">
+                  Cerrar sesión
+                </button>
+              </form>
+            </li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido -->
+  <main class="flex-fill">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light text-center py-3">
+      <p class="mb-0">&copy; {{ now|date:"Y" }} Blog Mundial FIFA - Todos los derechos reservados. Gobierno del CHACO.</p>
+      <small>Desarrollado con 🐍 usando Django y Bootstrap para el INFORMATORIO 2025.</small>
+      
+      <!-- Redes sociales -->
+      <div class="social-icons">
+        <a href="https://facebook.com/TU_PAGINA" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/TU_PERFIL" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/TU_USUARIO" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://youtube.com/TU_CANAL" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+  </footer>
+
+</div> <!-- /wrapper -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
