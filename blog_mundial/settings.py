@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-fknsa7d4$qql0lhujwnp=2^y(4m70g(0wl@840b34nsktd)jze
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "192.168.100.123"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "192.168.100.123, "hernanpm101.pythonanywhere.com"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000",
