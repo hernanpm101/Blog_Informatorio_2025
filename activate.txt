@@ -2,7 +2,9 @@ PS C:\Users\Hernan\Desktop\blog_mundial> venv\Scripts\activate
 
 (venv) PS C:\Users\Hernan\Desktop\blog_mundial> python manage.py runserver
 
+deactivate
+
 Super_usuario_blog = hernan
 contraseña = 1234
 
-deactivate
+
