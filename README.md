@@ -23,6 +23,13 @@ Para poder ingresar como **superusuario** y poder editar, agregar un nuevo Post,
 
 ---
 
+## 🌐 Proyecto en producción
+El blog se encuentra desplegado en **PythonAnywhere by Anaconda** y puede visitarse en el siguiente enlace:  
+
+👉 [Blog Mundial FIFA - Producción](https://hernanpm101.pythonanywhere.com/)  
+
+---
+
 ## Estructura del proyecto
 
 ```bash
@@ -59,6 +66,7 @@ blog_mundial/
 │       ├── fondo.jpg
 │       └── favicon.png
 └── blog_mundial_db (MySQL)
+
 
 
 
