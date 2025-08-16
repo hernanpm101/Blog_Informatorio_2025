@@ -75,3 +75,8 @@ blog_mundial/
 │       └── favicon.png
 └── requirements.txt
 
+## ⚙️ Instalación y dependencias
+
+Este proyecto utiliza las siguientes librerías (ver `requirements.txt`):
+
+
