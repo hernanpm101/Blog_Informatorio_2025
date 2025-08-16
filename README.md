@@ -36,6 +36,10 @@ El blog se encuentra desplegado en **PythonAnywhere by Anaconda** y puede visita
 [![Ver en YouTube](https://img.youtube.com/vi/fWKreEDlZsU/maxresdefault.jpg)](https://www.youtube.com/watch?v=fWKreEDlZsU)
 
 ---
+## ⚙️ Instalación y dependencias
+
+Este proyecto utiliza las siguientes librerías (ver `requirements.txt`):
+---
 
 ## Estructura del proyecto
 
@@ -74,9 +78,4 @@ blog_mundial/
 │       ├── fondo.jpg
 │       └── favicon.png
 └── requirements.txt
-
-## ⚙️ Instalación y dependencias
-
-Este proyecto utiliza las siguientes librerías (ver `requirements.txt`):
-
 
