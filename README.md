@@ -1,11 +1,65 @@
 # Proyecto desarrollado en Python/Django
+
 ## Descripción
-Blog Mundial FIFA es un espacio dedicado a recorrer la apasionante historia de los Mundiales de Fútbol, desde Uruguay 1930 hasta Qatar 2022. Aquí encontrarás análisis de cada torneo, posiciones de las selecciones, anécdotas, curiosidades y los momentos que marcaron época. Nuestro objetivo es mantener viva la memoria de cada Copa del Mundo, acercando estadísticas, historias y reflexiones tanto para fanáticos del fútbol como para quienes disfrutan de la historia detrás de este deporte. También contamos con un espacio para que los lectores comenten, compartan sus opiniones y formen parte de esta comunidad mundialista.<br>
-<br>Alumnos: Maria Cristina Roma, Jonathan Ariel Sotelo y Hernan Perez Melgar (Grupo 12)
-## información adicional
-Para poder ingresar como superusurio y poder editar, agregar un nuevo Post, eliminar comentarios, crear categorias, etc:<br>
-supersuario: hernan <br>
-contraseña: 1234
+**Blog Mundial FIFA** es un espacio dedicado a recorrer la apasionante historia de los Mundiales de Fútbol, desde Uruguay 1930 hasta Qatar 2022.  
+Aquí encontrarás análisis de cada torneo, posiciones de las selecciones, anécdotas, curiosidades y los momentos que marcaron época.  
+
+Nuestro objetivo es mantener viva la memoria de cada Copa del Mundo, acercando estadísticas, historias y reflexiones tanto para fanáticos del fútbol como para quienes disfrutan de la historia detrás de este deporte.  
+
+También contamos con un espacio para que los lectores comenten, compartan sus opiniones y formen parte de esta comunidad mundialista.  
+
+👨‍💻 **Alumnos**:  
+- Maria Cristina Roma  
+- Jonathan Ariel Sotelo  
+- Hernan Perez Melgar (Grupo 12)  
+
+---
+
+## Información adicional
+Para poder ingresar como **superusuario** y poder editar, agregar un nuevo Post, eliminar comentarios, crear categorías, etc:  
+
+- **Usuario**: `hernan`  
+- **Contraseña**: `1234`  
+
+---
+
+## Estructura del proyecto
+
+```bash
+blog_mundial/
+├── manage.py
+├── blog_mundial
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── mundial
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   └── mundial
+│   │       ├── acerca.html
+│   │       ├── base.html
+│   │       ├── contacto.html
+│   │       ├── detalle_post.html
+│   │       ├── inicio.html
+│   │       ├── listar_posts.html
+│   │       ├── login.html
+│   │       ├── registro.html
+│   │       └── crear_post.html
+│   ├── urls.py
+│   └── views.py
+├── static
+│   └── img
+│       ├── fondo.jpg
+│       └── favicon.png
+└── blog_mundial_db (MySQL)
+
 
 
 
