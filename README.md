@@ -4,7 +4,7 @@
 Alumnos: Maria Cristina Roma, Jonathan Ariel Sotelo y Hernan Perez Melgar (Grupo 12)
 ## información adicional
 Para poder ingresar como superusurio y poder editar, agregar un nuevo Post, eliminar comentarios, crear categorias, etc:<br>
-supersuario: hernan
+supersuario: hernan <br>
 contraseña: 1234
 
 
