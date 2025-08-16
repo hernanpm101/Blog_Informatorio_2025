@@ -8,10 +8,10 @@ Nuestro objetivo es mantener viva la memoria de cada Copa del Mundo, acercando e
 
 También contamos con un espacio para que los lectores comenten, compartan sus opiniones y formen parte de esta comunidad mundialista.  
 
-👨‍💻 **Alumnos**:  
+👨‍💻 **Alumnos (Grupo 12)**:  
 - Maria Cristina Roma  
 - Jonathan Ariel Sotelo  
-- Hernan Perez Melgar (Grupo 12)  
+- Hernan Perez Melgar   
 
 ---
 
