@@ -53,19 +53,21 @@ blog_mundial/
 │   │       ├── acerca.html
 │   │       ├── base.html
 │   │       ├── contacto.html
+│   │       ├── crear_post.html
 │   │       ├── detalle_post.html
 │   │       ├── inicio.html
 │   │       ├── listar_posts.html
 │   │       ├── login.html
 │   │       ├── registro.html
-│   │       └── crear_post.html
+│   │       └── ...
 │   ├── urls.py
 │   └── views.py
 ├── static
 │   └── img
 │       ├── fondo.jpg
 │       └── favicon.png
-└── blog_mundial_db (MySQL)
+└── requirements.txt
+
 
 
 
