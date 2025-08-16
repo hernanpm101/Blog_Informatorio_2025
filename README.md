@@ -2,31 +2,38 @@
 
 ## Descripción
 **Blog Mundial FIFA** es un espacio dedicado a recorrer la apasionante historia de los Mundiales de Fútbol, desde Uruguay 1930 hasta Qatar 2022.  
-Aquí encontrarás análisis de cada torneo, posiciones de las selecciones, anécdotas, curiosidades y los momentos que marcaron época.  
+Aquí encontrarás análisis de cada torneo, posiciones de las selecciones, anécdotas, curiosidades y los momentos que marcaron época.
 
-Nuestro objetivo es mantener viva la memoria de cada Copa del Mundo, acercando estadísticas, historias y reflexiones tanto para fanáticos del fútbol como para quienes disfrutan de la historia detrás de este deporte.  
+Nuestro objetivo es mantener viva la memoria de cada Copa del Mundo, acercando estadísticas, historias y reflexiones tanto para fanáticos del fútbol como para quienes disfrutan de la historia detrás de este deporte.
 
-También contamos con un espacio para que los lectores comenten, compartan sus opiniones y formen parte de esta comunidad mundialista.  
+También contamos con un espacio para que los lectores comenten, compartan sus opiniones y formen parte de esta comunidad mundialista.
 
 👨‍💻 **Alumnos (Grupo 12)**:  
 - Maria Cristina Roma  
 - Jonathan Ariel Sotelo  
-- Hernan Perez Melgar   
+- Hernan Perez Melgar  
 
 ---
 
 ## Información adicional
-Para poder ingresar como **superusuario** y poder editar, agregar un nuevo Post, eliminar comentarios, crear categorías, etc:  
+Para poder ingresar como **superusuario** y poder editar, agregar un nuevo Post, eliminar comentarios, crear categorías, etc:
 
 - **Usuario**: `hernan`  
-- **Contraseña**: `1234`  
+- **Contraseña**: `1234`
 
 ---
 
-## 🌐 Proyecto en producción
-El blog se encuentra desplegado en **PythonAnywhere by Anaconda** y puede visitarse en el siguiente enlace:  
+## ​ Proyecto en producción
+El blog se encuentra desplegado en **PythonAnywhere by Anaconda** y puede visitarse en el siguiente enlace:
 
-👉 [Blog Mundial FIFA - Producción](https://hernanpm101.pythonanywhere.com/)  
+👉 [Blog Mundial FIFA - Producción](https://hernanpm101.pythonanywhere.com/)
+
+---
+
+##  ​ Video de presentación
+¡Mirá nuestro video en YouTube!
+
+[![Ver en YouTube](https://img.youtube.com/vi/fWKreEDlZsU/maxresdefault.jpg)](https://www.youtube.com/watch?v=fWKreEDlZsU)
 
 ---
 
@@ -67,9 +74,4 @@ blog_mundial/
 │       ├── fondo.jpg
 │       └── favicon.png
 └── requirements.txt
-
-
-
-
-
 
